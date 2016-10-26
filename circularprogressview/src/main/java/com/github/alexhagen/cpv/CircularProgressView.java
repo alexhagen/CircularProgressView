@@ -102,7 +102,7 @@ public class CircularProgressView extends View {
                 resources.getInteger(R.integer.cpv_default_end_angle));
         endAngle = initialEndAngle;
         if (endAngle <= startAngle) {
-            endAngle = endAngle + 180;
+            endAngle = endAngle + 360;
         }
         totalAngle = endAngle - startAngle;
 
@@ -179,7 +179,7 @@ public class CircularProgressView extends View {
 
         // Draw the arc
         if (endAngle <= startAngle) {
-          endAngle = endAngle + 180;
+          endAngle = endAngle + 360;
         }
         totalAngle = endAngle - startAngle;
         float sweepAngle = (isInEditMode()) ? currentProgress/maxProgress*totalAngle : actualProgress/maxProgress*totalAngle;
