@@ -11,5 +11,7 @@
         <attr name="cpv_animAutostart" format="boolean" />
         <attr name="cpv_animSteps" format="integer" />
         <attr name="cpv_startAngle" format="float" />
+        <attr name="cpv_endAngle" format="float" />
+        <attr name="cpv_direction" format="float" />
     </declare-styleable>
 </resources>
