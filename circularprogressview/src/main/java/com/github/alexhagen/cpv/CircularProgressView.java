@@ -1,4 +1,4 @@
-package com.github.rahatarmanahmed.cpv;
+package com.github.alexhagen.cpv;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -46,9 +46,10 @@ public class CircularProgressView extends View {
     private AnimatorSet indeterminateAnimator;
     private float initialStartAngle;
     private float initialEndAngle;
-    private float EndAngle;
+    private float endAngle;
     private float initialDirection;
     private float direction;
+    private float totalAngle;
 
     public CircularProgressView(Context context) {
         super(context);
@@ -95,14 +96,15 @@ public class CircularProgressView extends View {
         autostartAnimation = a.getBoolean(R.styleable.CircularProgressView_cpv_animAutostart,
                 resources.getBoolean(R.bool.cpv_default_anim_autostart));
         initialStartAngle = a.getFloat(R.styleable.CircularProgressView_cpv_startAngle,
-                resources.getFloat(R.float.cpv_default_start_angle));
+                resources.getInteger(R.integer.cpv_default_start_angle));
         startAngle = initialStartAngle;
         initialEndAngle = a.getFloat(R.styleable.CircularProgressView_cpv_endAngle,
-                resources.getFloat(R.float.cpv_default_end_angle));
+                resources.getInteger(R.integer.cpv_default_end_angle));
         endAngle = initialEndAngle;
-        initialDirection = a.getInt(R.styleable.CircularProgressView_cpv_direction,
-                resources.getInt(R.integer.cpv_default_direction));
-        direction = initialDirection;
+        if (endAngle <= startAngle) {
+            endAngle = endAngle + 180;
+        }
+        totalAngle = endAngle - startAngle;
 
         int accentColor = getContext().getResources().getIdentifier("colorAccent", "attr", getContext().getPackageName());
 
@@ -177,9 +179,9 @@ public class CircularProgressView extends View {
 
         // Draw the arc
         if (endAngle <= startAngle) {
-          endAngle = endAngle + 360;
+          endAngle = endAngle + 180;
         }
-        float totalAngle = endAngle - startAngle;
+        totalAngle = endAngle - startAngle;
         float sweepAngle = (isInEditMode()) ? currentProgress/maxProgress*totalAngle : actualProgress/maxProgress*totalAngle;
         if(!isIndeterminate)
             canvas.drawArc(bounds, startAngle, sweepAngle, false, paint);

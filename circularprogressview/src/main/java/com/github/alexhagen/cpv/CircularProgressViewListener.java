@@ -1,4 +1,4 @@
-package com.github.rahatarmanahmed.cpv;
+package com.github.alexhagen.cpv;
 
 /**
  * Listener interface to provide different callbacks for Circular Progress Views.

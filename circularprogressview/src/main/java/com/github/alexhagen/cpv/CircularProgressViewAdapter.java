@@ -1,4 +1,4 @@
-package com.github.rahatarmanahmed.cpv;
+package com.github.alexhagen.cpv;
 
 /**
  * This class implements CircularProgressViewListener. Use this if you don't want to implement all methods for the listener.
