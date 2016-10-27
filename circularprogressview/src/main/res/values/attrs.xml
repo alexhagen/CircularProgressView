@@ -13,5 +13,6 @@
         <attr name="cpv_startAngle" format="float" />
         <attr name="cpv_endAngle" format="float" />
         <attr name="cpv_direction" format="float" />
+        <attr name="cpv_start_progress" format="float" />
     </declare-styleable>
 </resources>

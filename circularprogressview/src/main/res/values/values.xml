@@ -13,4 +13,5 @@
     <integer name="cpv_default_start_angle">-90</integer>
     <integer name="cpv_default_end_angle">-90</integer>
     <integer name="cpv_default_direction">-1</integer>
+    <integer name="cpv_default_start_progress">0</integer>
 </resources>

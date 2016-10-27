@@ -50,6 +50,7 @@ public class CircularProgressView extends View {
     private float initialDirection;
     private float direction;
     private float totalAngle;
+    private float startProgress;
 
     public CircularProgressView(Context context) {
         super(context);
@@ -105,6 +106,8 @@ public class CircularProgressView extends View {
             endAngle = endAngle + 360;
         }
         totalAngle = endAngle - startAngle;
+        startProgress = a.getFloat(R.styleable.CircularProgressView_cpv_start_progress,
+                resources.getInteger(R.integer.cpv_default_start_progress));
 
         int accentColor = getContext().getResources().getIdentifier("colorAccent", "attr", getContext().getPackageName());
 
@@ -182,9 +185,11 @@ public class CircularProgressView extends View {
           endAngle = endAngle + 360;
         }
         totalAngle = endAngle - startAngle;
+        //currentProgress = startProgress;
         float sweepAngle = (isInEditMode()) ? currentProgress/maxProgress*totalAngle : actualProgress/maxProgress*totalAngle;
+        float minProgressAngle = startProgress/maxProgress*totalAngle;
         if(!isIndeterminate)
-            canvas.drawArc(bounds, startAngle, sweepAngle, false, paint);
+            canvas.drawArc(bounds, startAngle + minProgressAngle, sweepAngle - minProgressAngle, false, paint);
         else
             canvas.drawArc(bounds, startAngle + indeterminateRotateOffset, indeterminateSweep, false, paint);
     }
@@ -266,6 +271,13 @@ public class CircularProgressView extends View {
      */
     public void setMaxProgress(float maxProgress) {
         this.maxProgress = maxProgress;
+        invalidate();
+    }
+
+    public float getMinProgress() { return startProgress; }
+
+    public void setMinProgress(float minProgress) {
+        this.startProgress = minProgress;
         invalidate();
     }
 

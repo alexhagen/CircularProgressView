@@ -37,7 +37,21 @@
             app:cpv_indeterminate="false"
             app:cpv_startAngle="210"
             app:cpv_endAngle="330"
-            app:cpv_progress="20"
+            app:cpv_progress="90"
+            app:cpv_thickness="4dp" />
+
+        <com.github.alexhagen.cpv.CircularProgressView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="0dp"
+            app:cpv_animAutostart="true"
+            app:cpv_indeterminate="false"
+            app:cpv_startAngle="210"
+            app:cpv_endAngle="330"
+            app:cpv_progress="90"
+            app:cpv_start_progress="40"
             app:cpv_thickness="4dp" />
     </LinearLayout>
 
